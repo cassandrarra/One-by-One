@@ -21,7 +21,7 @@ export const Route = createFileRoute("/home")({
 function HomePage() {
   const navigate = useNavigate();
   return (
-    <TabScreen tab="home" title="Home">
+    <TabScreen tab="home" title="hi,">
       <p className="type-body text-text-muted">Good to see you.</p>
       <EmptyState
         icon={Sparkles}
