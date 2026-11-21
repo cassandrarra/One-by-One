@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Design system
+
+- `src/styles.css` is the only theme file: role-named color tokens (hex allowed only there), type utilities (`type-*`), radii, shadow, `pressed:`/`focus-shown` variants and `focus-ring`. Why: the palette must be swappable by editing one file.
+- Shared UI lives in `src/components/obo/` and uses only role tokens (`bg-primary`, `text-text`, ...); `src/test/design-system.test.tsx` fails on any hex code there. Why: keeps components themeable.
+- Static state demos use `data-pressed` / `data-focus` attributes, which the `pressed:` variant and `focus-ring` treat like `:active` / `:focus-visible`. Why: lets `/preview` show every state without extra props.
+- `/preview` (`src/routes/preview.tsx`) must show every shared component in every state and stays unlinked.
