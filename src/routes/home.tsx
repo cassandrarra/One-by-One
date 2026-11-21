@@ -25,7 +25,7 @@ function HomePage() {
       <p className="type-body text-text-muted">Good to see you.</p>
       <EmptyState
         icon={Sparkles}
-        message="We're looking for people near you. We'll let you know when someone is ready to say Hello."
+        message={"We're looking for people near you.\u00a0\nWe'll let you know when someone is ready to say Hello."}
         actionLabel="Tell us about you"
         onAction={() => navigate({ to: "/you" })}
       />
