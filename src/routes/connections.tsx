@@ -24,7 +24,7 @@ function ConnectionsPage() {
     <TabScreen tab="connections" title="Connections">
       <EmptyState
         icon={HeartHandshake}
-        message="No connections yet. When you and someone both want to say Hello, they'll show up here."
+        message={"No connections yet.\u00a0\nWhen you and someone both want to say Hello, they'll show up here."}
         actionLabel="Go to Home"
         onAction={() => navigate({ to: "/home" })}
       />
