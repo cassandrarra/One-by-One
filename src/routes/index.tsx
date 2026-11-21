@@ -44,7 +44,7 @@ function Welcome() {
           <p className="type-small text-text-muted">One by One</p>
           <h1 className="type-display">New friends, one Hello at a time.</h1>
           <p className="type-body text-text-muted">
-            Meet compatible people near you, in person, within 30 days.
+            Make new friends, in person, within 30 days.
           </p>
         </div>
         <ul className="flex flex-col gap-4">
