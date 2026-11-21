@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Coffee, MapPin, Users } from "lucide-react";
 
-import { PinnedFooter, PrimaryButton, ScreenLayout, showToast } from "@/components/obo";
+import { PinnedFooter, PrimaryButton, ScreenLayout } from "@/components/obo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,11 +30,12 @@ const POINTS = [
 ];
 
 function Welcome() {
+  const navigate = useNavigate();
   return (
     <ScreenLayout
       footer={
         <PinnedFooter>
-          <PrimaryButton onClick={() => showToast("Sign up is coming soon.")}>Get started</PrimaryButton>
+          <PrimaryButton onClick={() => navigate({ to: "/home" })}>Get started</PrimaryButton>
         </PinnedFooter>
       }
     >

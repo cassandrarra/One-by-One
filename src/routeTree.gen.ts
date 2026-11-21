@@ -10,11 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ConnectionsRouteImport } from './routes/connections'
+import { Route as HomeRouteImport } from './routes/home'
 import { Route as PreviewRouteImport } from './routes/preview'
+import { Route as YouRouteImport } from './routes/you'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectionsRoute = ConnectionsRouteImport.update({
+  id: '/connections',
+  path: '/connections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PreviewRoute = PreviewRouteImport.update({
@@ -22,31 +41,59 @@ const PreviewRoute = PreviewRouteImport.update({
   path: '/preview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YouRoute = YouRouteImport.update({
+  id: '/you',
+  path: '/you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/connections': typeof ConnectionsRoute
+  '/home': typeof HomeRoute
   '/preview': typeof PreviewRoute
+  '/you': typeof YouRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/connections': typeof ConnectionsRoute
+  '/home': typeof HomeRoute
   '/preview': typeof PreviewRoute
+  '/you': typeof YouRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/connections': typeof ConnectionsRoute
+  '/home': typeof HomeRoute
   '/preview': typeof PreviewRoute
+  '/you': typeof YouRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/preview'
+  fullPaths: '/' | '/community' | '/connections' | '/home' | '/preview' | '/you'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/preview'
-  id: '__root__' | '/' | '/preview'
+  to: '/' | '/community' | '/connections' | '/home' | '/preview' | '/you'
+  id:
+    | '__root__'
+    | '/'
+    | '/community'
+    | '/connections'
+    | '/home'
+    | '/preview'
+    | '/you'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
+  ConnectionsRoute: typeof ConnectionsRoute
+  HomeRoute: typeof HomeRoute
   PreviewRoute: typeof PreviewRoute
+  YouRoute: typeof YouRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +105,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connections': {
+      id: '/connections'
+      path: '/connections'
+      fullPath: '/connections'
+      preLoaderRoute: typeof ConnectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/preview': {
       id: '/preview'
       path: '/preview'
@@ -65,12 +133,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/you': {
+      id: '/you'
+      path: '/you'
+      fullPath: '/you'
+      preLoaderRoute: typeof YouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
+  ConnectionsRoute: ConnectionsRoute,
+  HomeRoute: HomeRoute,
   PreviewRoute: PreviewRoute,
+  YouRoute: YouRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
